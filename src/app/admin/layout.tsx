@@ -1,3 +1,4 @@
+import { MenuAdmin } from "@/components/MeuAdmin";
 import { requireLoginSessionForApiOrRedirect } from "@/lib/manage-login";
 
 type AdminPostLayoutProps = {
@@ -9,5 +10,11 @@ export default async function AdminPostLayout({
 }: Readonly<AdminPostLayoutProps>) {
   await requireLoginSessionForApiOrRedirect();
 
-  return <>{children}</>;
+  return (
+    <>
+      {" "}
+      <MenuAdmin />
+      {children}
+    </>
+  );
 }
