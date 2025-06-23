@@ -1,15 +1,15 @@
 "use client";
 
 import { loginAction } from "@/actions/login-action";
-import { Button } from "../common/ui/Buttons/Button";
-import { InputText } from "../common/ui/Inputs/InputText";
 import clsx from "clsx";
 import { LogInIcon } from "lucide-react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useActionState, useEffect } from "react";
 import { toast } from "react-toastify";
-import { HoneypotInput } from "../HoneypotInput";
+import { InputPrimary } from "../common/ui/Inputs/InputPrimary";
+import { ButtonPrimary } from "../common/ui/Buttons/ButtonPrimary";
+import { FormPrimary } from "../common/ui/Forms/FormPrimary";
 
 export function LoginForm() {
   const initialState = {
@@ -54,8 +54,8 @@ export function LoginForm() {
         "text-center max-w-sm mt-16 mb-32 mx-auto"
       )}
     >
-      <form action={action} className="flex-1 flex flex-col gap-6">
-        <InputText
+      <FormPrimary action={action} className="flex-1 flex flex-col gap-6">
+        <InputPrimary
           type="email"
           name="email"
           labelText="E-mail"
@@ -65,7 +65,8 @@ export function LoginForm() {
           required
         />
 
-        <InputText
+        <InputPrimary
+          showTogglePassword={true}
           type="password"
           name="password"
           labelText="Senha"
@@ -74,17 +75,15 @@ export function LoginForm() {
           required
         />
 
-        <HoneypotInput />
-
-        <Button disabled={isPending} type="submit" className="mt-4">
+        <ButtonPrimary disabled={isPending} type="submit" className="mt-4">
           <LogInIcon />
           Entrar
-        </Button>
+        </ButtonPrimary>
 
         <p className="text-sm/tight">
           <Link href="/user/new">Criar minha conta</Link>
         </p>
-      </form>
+      </FormPrimary>
     </div>
   );
 }

@@ -4,7 +4,6 @@ import { deleteUserAction } from "@/actions/delete-user-action";
 import { updateUserAction } from "@/actions/update-user-action";
 import { Button } from "../common/ui/Buttons/Button";
 import { Dialog } from "../Dialog";
-import { InputText } from "../common/ui/Inputs/InputText";
 import { PublicUserDto } from "@/lib/user/schemas";
 import { asyncDelay } from "@/utils/async-delay";
 import clsx from "clsx";
@@ -12,6 +11,7 @@ import { LockKeyholeIcon, OctagonXIcon, UserPenIcon } from "lucide-react";
 import Link from "next/link";
 import { useActionState, useEffect, useState, useTransition } from "react";
 import { toast } from "react-toastify";
+import { InputPrimary } from "../common/ui/Inputs/InputPrimary";
 
 type UpdateUserFormProps = {
   user: PublicUserDto;
@@ -74,7 +74,7 @@ export function UpdateUserForm({ user }: UpdateUserFormProps) {
       )}
     >
       <form action={action} className="flex-1 flex flex-col gap-6">
-        <InputText
+        <InputPrimary
           type="text"
           name="name"
           labelText="Nome"
@@ -83,7 +83,7 @@ export function UpdateUserForm({ user }: UpdateUserFormProps) {
           defaultValue={state.user.name}
         />
 
-        <InputText
+        <InputPrimary
           type="text"
           name="email"
           labelText="E-mail"

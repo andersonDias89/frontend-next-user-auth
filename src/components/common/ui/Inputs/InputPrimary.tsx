@@ -7,16 +7,17 @@ interface InputPrimaryProps extends InputHTMLAttributes<HTMLInputElement> {
   icon?: ReactNode;
   showTogglePassword?: boolean;
   error?: string;
+  labelText?: string;
 }
 
 export const InputPrimary = forwardRef<HTMLInputElement, InputPrimaryProps>(
   (
     {
-      label,
       icon,
       type = "text",
       showTogglePassword = false,
       className,
+      labelText,
       error,
       ...props
     },
@@ -34,9 +35,9 @@ export const InputPrimary = forwardRef<HTMLInputElement, InputPrimaryProps>(
 
     return (
       <div className="w-full">
-        {label && (
+        {labelText && (
           <label className="block text-sm text-gray-400 mb-1 ml-1">
-            {label}
+            {labelText}
           </label>
         )}
         <div
